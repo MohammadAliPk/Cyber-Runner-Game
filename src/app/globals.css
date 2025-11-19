@@ -1,26 +1,109 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --bg: #030014;
+  --bg-secondary: #090020;
+  --cyan: #4de5ff;
+  --violet: #c44dff;
+  --magenta: #ff4d9a;
+  --warning: #ffce4d;
+  --surface: rgba(5, 8, 35, 0.85);
+  color-scheme: dark;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+  min-height: 100vh;
+  font-family: var(--font-body), system-ui, -apple-system, BlinkMacSystemFont,
+    "Segoe UI", sans-serif;
+  background: radial-gradient(circle at top, #12003c 0%, #030014 65%, #01000c);
+  color: #f5f8ff;
+  overflow-x: hidden;
+}
+
+.neon-panel {
+  background: var(--surface);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 1.25rem;
+  box-shadow: 0 0 30px rgba(77, 229, 255, 0.15),
+    inset 0 0 40px rgba(5, 8, 35, 0.6);
+  backdrop-filter: blur(18px);
+}
+
+.glow-border {
+  position: relative;
+}
+
+.glow-border::after {
+  content: "";
+  position: absolute;
+  inset: -2px;
+  border-radius: inherit;
+  padding: 2px;
+  background: linear-gradient(120deg, #4de5ff, #c44dff, #ff4d9a);
+  filter: blur(6px);
+  opacity: 0.6;
+  z-index: -1;
+}
+
+.cyber-grid {
+  background-image: linear-gradient(
+      rgba(77, 229, 255, 0.08) 1px,
+      transparent 1px
+    ),
+    linear-gradient(90deg, rgba(196, 77, 255, 0.08) 1px, transparent 1px);
+  background-size: 80px 80px;
+}
+
+.text-glow {
+  text-shadow: 0 0 8px rgba(77, 229, 255, 0.6), 0 0 18px rgba(196, 77, 255, 0.4);
+}
+
+.button-pulse {
+  animation: pulse 2.4s ease-in-out infinite;
+}
+
+.float-soft {
+  animation: float 6s ease-in-out infinite;
+}
+
+.runner-trail {
+  background: radial-gradient(
+    circle at center,
+    rgba(77, 229, 255, 0.35),
+    transparent 70%
+  );
+  filter: blur(18px);
+}
+
+.game-gradient {
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, #050821 75%),
+    radial-gradient(circle at top, rgba(196, 77, 255, 0.25), transparent 55%);
+}
+
+.hud-blur {
+  background: rgba(3, 4, 20, 0.85);
+  backdrop-filter: blur(14px);
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 10px rgba(77, 229, 255, 0.35);
+  }
+  50% {
+    transform: scale(1.02);
+    box-shadow: 0 0 24px rgba(255, 77, 154, 0.45);
+  }
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
 }
